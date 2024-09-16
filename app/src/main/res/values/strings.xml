@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">HoarderScrapbook</string>
+    <string name="hoarders_scrapbook">Hoarder\'s Scrapbook</string>
+    <string name="watch_slideshow">Watch Slideshow</string>
+    <string name="view_memories">View Memories</string>
+    <string name="slideshow">Slideshow</string>
+    <string name="back">Back</string>
+    <string name="back_button">Back Button</string>
+    <string name="memories">Memories</string>
+    <string name="add_memory">Add Memory</string>
+    <string name="edit_memory">Edit Memory</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="est_date_of_memory">Estimate Date of Memory</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_image">Select Image</string>
+    <string name="take_photo">Take Photo</string>
+</resources>
