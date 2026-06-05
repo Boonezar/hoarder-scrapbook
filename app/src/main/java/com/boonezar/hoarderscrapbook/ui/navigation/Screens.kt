@@ -5,5 +5,6 @@ enum class Screens(val route: String) {
     SLIDESHOW("slideshow"),
     MEMORIES("memories"),
     MEMORY_INFO("memory_info"),
-    ADD_EDIT_MEMORY("add_edit_memory")
+    ADD_EDIT_MEMORY("add_edit_memory"),
+    ABOUT("about")
 }

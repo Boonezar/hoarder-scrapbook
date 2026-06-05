@@ -16,6 +16,6 @@ interface ImageUriDao {
     suspend fun delete(imageUri: ImageUri)
     @Query("SELECT * from image_uris WHERE id = :id")
     fun getById(id: Int): Flow<ImageUri>
-    @Query("SELECT * from image_uris")
-    fun getAllForMemory(): Flow<List<ImageUri>>
+    @Query("SELECT * from image_uris WHERE memoryId = :memoryId")
+    fun getAllForMemory(memoryId: Int): Flow<List<ImageUri>>
 }

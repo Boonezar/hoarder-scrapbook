@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.boonezar.hoarderscrapbook.ui.views.SharedViewModel
+import com.boonezar.hoarderscrapbook.ui.views.about.AboutDestination
 import com.boonezar.hoarderscrapbook.ui.views.add_edit_memory.AddEditMemoryDestination
 import com.boonezar.hoarderscrapbook.ui.views.dashboard.DashboardDestination
 import com.boonezar.hoarderscrapbook.ui.views.memories.MemoriesDestination
@@ -35,6 +36,9 @@ fun NavGraph (
         }
         composable(route = Screens.ADD_EDIT_MEMORY.route) {
             AddEditMemoryDestination(navController, sharedViewModel)
+        }
+        composable(route = Screens.ABOUT.route) {
+            AboutDestination(navController)
         }
     }
 }

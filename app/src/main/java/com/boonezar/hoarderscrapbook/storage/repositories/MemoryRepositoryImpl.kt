@@ -15,12 +15,13 @@ class MemoryRepositoryImpl @Inject constructor(
 ): MemoryRepository {
     override fun getMemory(id: Int) = memoryDao.getById(id)
     override fun getMemories() = memoryDao.getAll()
+    override fun getAllMemoriesWithImages() = memoryDao.getAllWithImages()
     override suspend fun insertMemory(memory: Memory) = memoryDao.insert(memory).toInt()
     override suspend fun updateMemory(memory: Memory) = memoryDao.update(memory)
     override suspend fun deleteMemory(memory: Memory) = memoryDao.delete(memory)
 
     override fun getImage(id: Int) = imageUriDao.getById(id)
-    override fun getImagesForMemory(memoryId: Int) = imageUriDao.getAllForMemory()
+    override fun getImagesForMemory(memoryId: Int) = imageUriDao.getAllForMemory(memoryId)
     override suspend fun insertImageUri(imageUri: ImageUri) = imageUriDao.insert(imageUri)
     override suspend fun deleteImageUri(imageUri: ImageUri) = imageUriDao.delete(imageUri)
 

@@ -5,9 +5,10 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
-import com.boonezar.hoarderscrapbook.models.ImageUri
 import com.boonezar.hoarderscrapbook.models.Memory
+import com.boonezar.hoarderscrapbook.models.MemoryWithImages
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,8 +21,12 @@ interface MemoryDao {
     suspend fun delete(memory: Memory)
     @Query("SELECT * from memories WHERE id = :id")
     fun getById(id: Int): Flow<Memory>
-    @Query("SELECT * from memories JOIN image_uris ON memories.id = :id AND image_uris.memoryId = :id WHERE memories.id = :id")
-    fun getByIdWithImages(id: Int): Flow<Any>
+    @Transaction
+    @Query("SELECT * from memories WHERE id = :id")
+    fun getByIdWithImages(id: Int): Flow<MemoryWithImages>
     @Query("SELECT * from memories ORDER BY entryDate DESC")
     fun getAll(): Flow<List<Memory>>
+    @Transaction
+    @Query("SELECT * from memories ORDER BY entryDate DESC")
+    fun getAllWithImages(): Flow<List<MemoryWithImages>>
 }

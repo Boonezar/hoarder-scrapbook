@@ -16,12 +16,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.boonezar.hoarderscrapbook.R
 import com.boonezar.hoarderscrapbook.providers.ComposeFileProvider
@@ -30,6 +32,7 @@ import com.boonezar.hoarderscrapbook.ui.composables.ImageSlider
 import com.boonezar.hoarderscrapbook.ui.composables.PrimaryButton
 import com.boonezar.hoarderscrapbook.ui.composables.ScreenHeader
 import com.boonezar.hoarderscrapbook.ui.composables.TextFieldWithDatePicker
+import com.boonezar.hoarderscrapbook.ui.theme.HoarderScrapbookTheme
 import com.boonezar.hoarderscrapbook.ui.views.add_edit_memory.AddEditMemoryContract.*
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -127,5 +130,53 @@ fun ImagesSection(state: State, onEvent: (event: Event) -> Unit) {
                 }
             )
         }
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview(showBackground = true)
+@Composable
+fun AddEditMemoryScreenPreview() {
+    HoarderScrapbookTheme {
+        val viewState = remember {
+            mutableStateOf(
+                State(
+                    isEditMode = false,
+                    id = null,
+                    name = "",
+                    description = "",
+                    estimateDateOfMemory = "",
+                    entryDate = "2024-01-15",
+                    images = emptyList(),
+                    showDatePicker = false,
+                    isSaveButtonEnabled = false
+                )
+            )
+        }
+        AddEditMemoryScreen(viewState = viewState, onEvent = { })
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview(showBackground = true)
+@Composable
+fun EditMemoryScreenPreview() {
+    HoarderScrapbookTheme {
+        val viewState = remember {
+            mutableStateOf(
+                State(
+                    isEditMode = true,
+                    id = 1,
+                    name = "Grandma's Teapot",
+                    description = "The blue teapot that was always on the kitchen counter.",
+                    estimateDateOfMemory = "2020-06-01",
+                    entryDate = "2024-01-15",
+                    images = emptyList(),
+                    showDatePicker = false,
+                    isSaveButtonEnabled = true
+                )
+            )
+        }
+        AddEditMemoryScreen(viewState = viewState, onEvent = { })
     }
 }

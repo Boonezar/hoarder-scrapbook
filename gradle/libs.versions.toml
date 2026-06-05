@@ -41,6 +41,7 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomDb" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomDb" }
 runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 
 
 [plugins]

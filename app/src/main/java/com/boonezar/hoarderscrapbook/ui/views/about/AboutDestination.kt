@@ -1,21 +1,20 @@
-package com.boonezar.hoarderscrapbook.ui.views.dashboard
+package com.boonezar.hoarderscrapbook.ui.views.about
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.boonezar.hoarderscrapbook.ui.navigation.Screens.*
-import com.boonezar.hoarderscrapbook.ui.views.dashboard.DashboardContract.Effect.*
+import com.boonezar.hoarderscrapbook.ui.views.about.AboutContract.Effect.ToPreviousScreen
 import com.boonezar.hoarderscrapbook.ui.views.VIEW_EFFECTS_KEY
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 
 @Composable
-fun DashboardDestination(
+fun AboutDestination(
     navController: NavController,
-    viewModel: DashboardViewModel = hiltViewModel()
+    viewModel: AboutViewModel = hiltViewModel()
 ) {
-    DashboardScreen(
+    AboutScreen(
         viewState = viewModel.viewState,
         onEvent = { viewModel.setEvent(it) }
     )
@@ -23,10 +22,7 @@ fun DashboardDestination(
     LaunchedEffect(VIEW_EFFECTS_KEY) {
         viewModel.effect.onEach { effect ->
             when (effect) {
-                ToSlideshowScreen -> navController.navigate(SLIDESHOW.route)
-                ToMemoriesScreen -> navController.navigate(MEMORIES.route)
-                ToAddMemoryScreen -> navController.navigate(ADD_EDIT_MEMORY.route)
-                ToAboutScreen -> navController.navigate(ABOUT.route)
+                ToPreviousScreen -> navController.popBackStack()
             }
         }.collect()
     }
